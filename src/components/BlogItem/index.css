@@ -1,0 +1,22 @@
+/* Write your CSS code here */
+
+.item-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.item-image {
+  width: 400px;
+  height: 400px;
+}
+.item-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.item-title {
+  color: #000000;
+  font-family: 'Roboto';
+  font-size: 30px;
+  font-weight: bold;
+}
