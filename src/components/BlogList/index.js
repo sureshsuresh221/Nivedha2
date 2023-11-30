@@ -1,6 +1,4 @@
-// Write your JS code here
 import {Component} from 'react'
-
 import Loader from 'react-loader-spinner'
 
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
@@ -9,7 +7,7 @@ import BlogItem from '../BlogItem'
 
 import './index.css'
 
-class BlogsItem extends Component {
+class BlogsList extends Component {
   state = {isLoading: true, blogsData: []}
 
   componentDidMount() {
@@ -18,10 +16,11 @@ class BlogsItem extends Component {
 
   getBlogsData = async () => {
     const response = await fetch('https://apis.ccbp.in/blogs')
-
+    const statusCode = await response.statusCode
+    console.log(statusCode)
     const data = await response.json()
 
-    const updatedData = data.map(eachItem => ({
+    const formattedData = data.map(eachItem => ({
       id: eachItem.id,
       title: eachItem.title,
       imageUrl: eachItem.image_url,
@@ -29,24 +28,23 @@ class BlogsItem extends Component {
       author: eachItem.author,
       topic: eachItem.topic,
     }))
-    this.setState({blogsData: updatedData, isLoading: false})
+    this.setState({blogsData: formattedData, isLoading: false})
   }
 
   render() {
     const {blogsData, isLoading} = this.state
+    console.log(isLoading)
 
     return (
       <div className="blog-list-container">
         {isLoading ? (
-          <Loader type="TailSpinner" color="green" height={50} width={50} />
+          <Loader type="TailSpin" color="#00BFFF" height={50} width={50} />
         ) : (
-          blogsData.map(item => (
-            <BlogItem blogsItemDetails={item} key={item.id} />
-          ))
+          blogsData.map(item => <BlogItem blogData={item} key={item.id} />)
         )}
       </div>
     )
   }
 }
 
-export default BlogsItem
+export default BlogsList

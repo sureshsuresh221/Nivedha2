@@ -1,21 +1,18 @@
-// Write your JS code here
-
 import {Component} from 'react'
 
 import Loader from 'react-loader-spinner'
 
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
-
 import './index.css'
 
 class BlogItemDetails extends Component {
   state = {blogData: {}, isLoading: true}
 
   componentDidMount() {
-    this.getBlogsItemData()
+    this.getBlogItemData()
   }
 
-  getBlogsItemData = async () => {
+  getBlogItemData = async () => {
     const {match} = this.props
     const {params} = match
     const {id} = params
@@ -39,7 +36,7 @@ class BlogItemDetails extends Component {
 
     return (
       <div className="blog-info">
-        <h1 className="blog-details-title">{title}</h1>
+        <h2 className="blog-details-title">{title}</h2>
         <div className="author-details">
           <img className="author-pic" src={avatarUrl} alt={author} />
           <p className="details-author-name">{author}</p>
@@ -57,7 +54,7 @@ class BlogItemDetails extends Component {
       <div className="blog-container">
         {isLoading ? (
           <div data-testid="loader">
-            <Loader type="TailSpin" color="black" height={50} width={50} />
+            <Loader type="TailSpin" color="#00BFFF" height={50} width={50} />
           </div>
         ) : (
           this.renderBlogItemDetails()

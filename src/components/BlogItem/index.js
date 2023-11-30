@@ -1,12 +1,9 @@
-// Write your JS code here
-
 import {Link} from 'react-router-dom'
-
 import './index.css'
 
 const BlogItem = props => {
   const {blogData} = props
-  const {id, imageUrl, topic, author, avatarUrl, title} = blogData
+  const {id, imageUrl, topic, title, avatarUrl, author} = blogData
 
   return (
     <li className="blog-item">
